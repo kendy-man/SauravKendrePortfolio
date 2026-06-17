@@ -6,3 +6,8 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Local scratch/reference files
+scratch_*.html
+scratch_*.txt
+gdoc_content.txt
