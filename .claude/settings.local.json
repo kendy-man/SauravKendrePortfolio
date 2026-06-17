@@ -9,7 +9,15 @@
       "Bash(gh auth *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git -c user.email=sauravsunilkendre@gmail.com -c user.name=\"Saurav Kendre\" commit -m \"Initial commit: React + Vite portfolio replicating kendre.framer.website\")"
+      "Bash(git -c user.email=sauravsunilkendre@gmail.com -c user.name=\"Saurav Kendre\" commit -m \"Initial commit: React + Vite portfolio replicating kendre.framer.website\")",
+      "Bash(rm -rf .antigravity assets metadata.json server.ts .env .env.example README.md .vscode && ls -la)",
+      "Bash(npm install *)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(git stash *)",
+      "Bash(git rm *)",
+      "Bash(git rebase *)",
+      "Bash(GIT_EDITOR=true git rebase --continue)"
     ]
   }
 }
