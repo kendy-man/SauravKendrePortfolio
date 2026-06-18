@@ -5,6 +5,9 @@ import { Home } from './pages/Home';
 import { AboutMe } from './pages/AboutMe';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { VisualDesign } from './pages/VisualDesign';
+import { AmazonPrime } from './pages/AmazonPrime';
+import { CostEstimates } from './pages/CostEstimates';
+import { HelpCentre } from './pages/HelpCentre';
 import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
@@ -41,9 +44,19 @@ export default function App() {
       return <VisualDesign navigateTo={navigateTo} />;
     }
 
+    if (projectId === 'amazon-prime-cancellation') {
+      return <AmazonPrime navigateTo={navigateTo} />;
+    }
+
+    if (projectId === 'updaing-cost-estimates') {
+      return <CostEstimates navigateTo={navigateTo} />;
+    }
+
+    if (projectId === 'helpcentre-website-design') {
+      return <HelpCentre navigateTo={navigateTo} />;
+    }
+
     const projectKeys = [
-      'updaing-cost-estimates',
-      'helpcentre-website-design',
       'jiostream-studio',
       'pret-a-manger',
       'pret-loyalty',

@@ -7,6 +7,12 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
   const projects = [
     {
+      id: 'amazon-prime-cancellation',
+      title: 'Unsubscribing from Amazon Prime',
+      category: 'Human Factors · UX Research',
+      image: '/images/piXTO6xxF9ttNpvPptDDsk8JQU.png',
+    },
+    {
       id: 'updaing-cost-estimates',
       title: 'Updating Cost Estimates',
       category: 'Feature Updates',
