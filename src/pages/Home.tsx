@@ -37,11 +37,7 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
       title: 'JioEvents',
       category: 'Product Design',
     },
-    {
-      id: 'jio-pc',
-      title: 'JioPC',
-      category: 'Onboarding Design',
-    },
+
     {
       id: 'pret-a-manger',
       title: 'Pret a Manger',
