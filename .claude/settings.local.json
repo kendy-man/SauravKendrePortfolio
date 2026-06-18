@@ -17,7 +17,10 @@
       "Bash(git stash *)",
       "Bash(git rm *)",
       "Bash(git rebase *)",
-      "Bash(GIT_EDITOR=true git rebase --continue)"
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(git -c user.email=sauravsunilkendre@gmail.com -c user.name=\"Saurav Kendre\" commit -m \"Add Vercel SPA rewrite so deep links resolve to index.html\")",
+      "Bash(npm i *)",
+      "Bash(git -c user.email=sauravsunilkendre@gmail.com -c user.name=\"Saurav Kendre\" commit -m \"Add Vercel Analytics\")"
     ]
   }
 }

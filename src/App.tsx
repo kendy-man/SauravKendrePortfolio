@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { AboutMe } from './pages/AboutMe';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { VisualDesign } from './pages/VisualDesign';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -62,6 +63,7 @@ export default function App() {
         {renderPage()}
       </main>
       <Footer navigateTo={navigateTo} />
+      <Analytics />
     </div>
   );
 }
