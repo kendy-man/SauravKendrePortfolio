@@ -6,30 +6,26 @@ interface AboutMeProps {
 
 export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
   return (
-    <div className="animate-fade-in mx-auto max-w-4xl px-6 py-12 md:py-20">
+    <div className="animate-fade-in mx-auto max-w-6xl px-6 py-12 md:py-20">
       {/* Intro Grid */}
-      <div className="grid gap-12 md:grid-cols-3">
+      <div className="grid gap-12 md:grid-cols-5">
         {/* Left Column: Heading */}
-        <div className="md:col-span-2">
-          <h1 className="text-4xl font-bold tracking-tight text-primary md:text-6xl leading-tight">
-            My name is{' '}
-            <span className="font-serif italic font-normal text-slate-800">Saurav K</span>,
+        <div className="md:col-span-3">
+          <h1 className="text-4xl font-normal tracking-tight text-primary md:text-6xl leading-tight">
+            My name is <span className="font-bold text-slate-900">Saurav K</span>,
             <br />
-            I’m a <span className="font-bold text-slate-900">UX designer</span>.
+            I’m a UX designer.
           </h1>
 
           <div className="mt-8 space-y-6 text-base md:text-lg text-secondary font-medium leading-relaxed">
             <p>
-              I am a <span className="text-primary font-bold">User-Centered Visual & Product Designer</span> with <span className="text-primary font-bold">5 years</span> of experience in crafting intuitive, accessible, and impactful digital experiences across both <span className="text-primary font-bold">B2B and B2C</span> platforms. My core expertise lies in <span className="text-primary font-bold">SaaS product design</span>, where I excel at simplifying complex workflows and enhancing user engagement.
-            </p>
-            <p>
-              Currently pursuing a PG Diploma in Interaction Design (Hybrid) at IIT Bombay, (2027).
+              I am a <span className="text-primary font-bold">User-Centered Visual & Product Designer</span> with <span className="text-primary font-bold">5+ years</span> of experience in crafting intuitive, accessible, and impactful digital experiences across both <span className="text-primary font-bold">B2B and B2C</span> platforms. My core expertise lies in <span className="text-primary font-bold">SaaS product design</span>, where I excel at simplifying complex workflows and enhancing user engagement.
             </p>
             <p>
               I integrate <span className="text-primary font-bold">AI-Copilots</span> into my process to significantly <span className="text-primary font-bold">optimize and enhance</span> the speed and quality of design solutions, ensuring faster delivery of scalable products that meet both business and user goals.
             </p>
             <p>
-              I am proficient in Figma, Lovable.dev, Figma Make, AI, vibe coding, prototyping tools, and user research, with a proven track record including projects like Tira Beauty Backend Console, JioStream Studio (Tira), and Pret-a-Manger Loyalty.
+              I am proficient in Figma, Lovable.dev, Figma Make, Claude, AI, vibe coding, prototyping tools, and user research, with a proven track record including projects like JioPC, Tira Beauty Backend Console, JioStream Studio (Tira), JioEvents, and Pret-a-Manger Loyalty.
             </p>
             <p className="text-slate-800 font-bold font-serif italic text-xl mt-8">
               "I believe that the success of a project is based on good collaboration and being kind."
@@ -38,7 +34,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
         </div>
 
         {/* Right Column: Experience & Info */}
-        <div className="space-y-10 border-t border-slate-100 pt-8 md:border-t-0 md:pt-0">
+        <div className="md:col-span-2 space-y-10 border-t border-slate-100 pt-8 md:border-t-0 md:pt-0">
           {/* Social Links */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Socials</h3>
@@ -91,6 +87,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
               <li>Figma</li>
               <li>Figma Make</li>
               <li>Lovable.dev</li>
+              <li>Claude</li>
               <li>AI Copilots / Vibe Coding</li>
               <li>Prototyping & User Research</li>
             </ul>
@@ -112,8 +109,10 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Key Projects</h3>
             <ul className="mt-4 space-y-3 text-sm text-secondary font-medium">
+              <li>• JioPC</li>
               <li>• Tira Beauty Backend Console</li>
               <li>• JioStream Studio (Tira)</li>
+              <li>• JioEvents</li>
               <li>• Pret-a-Manger Loyalty</li>
             </ul>
           </div>

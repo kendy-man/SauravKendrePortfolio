@@ -24,29 +24,38 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
       category: 'Website Design',
       image: '/images/LI7d4N5GCHNpbVHwKlSlMmAB4.png',
     },
+  ];
+
+  const secondaryProjects = [
     {
       id: 'jiostream-studio',
       title: 'JioStream Studio',
       category: 'Product Design',
-      image: '/images/3ILZYJMSYhjgULiyFnwQZ3pzCs.png',
+    },
+    {
+      id: 'jio-events',
+      title: 'JioEvents',
+      category: 'Product Design',
+    },
+    {
+      id: 'jio-pc',
+      title: 'JioPC',
+      category: 'Onboarding Design',
     },
     {
       id: 'pret-a-manger',
       title: 'Pret a Manger',
       category: 'Product Design',
-      image: '/images/MVsYDkRnVG5SNj9S1iW8VK2S5Tw.png',
     },
     {
       id: 'pret-loyalty',
       title: 'Pret Loyalty Research',
       category: 'User Research',
-      image: '/images/WmlDELhLQpCrF5NSFbxFQu8p8.png',
     },
     {
       id: 'visualdesign',
-      title: 'Visual Design Portfolio',
+      title: 'Best of Visual Design',
       category: 'Visual Design',
-      image: '/images/FXRh22Fgw9xnyfnAj7vkffBZP1w.png',
     },
   ];
 
@@ -54,14 +63,13 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
     <div className="animate-fade-in mx-auto max-w-5xl px-6 py-12 md:py-20">
       {/* Hero Section */}
       <section className="mb-20">
-        <h1 className="text-4xl font-bold tracking-tight text-primary md:text-6xl lg:text-7xl leading-tight">
-          My name is{' '}
-          <span className="font-serif italic font-normal text-slate-800">Saurav K</span>,
+        <h1 className="text-4xl font-normal tracking-tight text-primary md:text-6xl lg:text-7xl leading-tight">
+          My name is <span className="font-bold text-slate-900">Saurav K</span>,
           <br className="hidden sm:inline" />
-          I’m a <span className="font-bold text-slate-900">UX designer</span>.
+          I’m a UX designer.
         </h1>
         <p className="mt-8 max-w-3xl text-lg md:text-xl text-secondary font-medium leading-relaxed">
-          UX UI designer with <span className="font-bold text-primary">5 years</span> of experience crafting intuitive, usable, and high-impact digital products. Strong background in <span className="font-bold text-primary">SaaS product design</span>, with work spanning platforms like Tira Beauty, JioStream Studio (Tira), and Pret A Manger Loyalty. Actively leverage AI copilots & vibe coding to accelerate the process. Currently pursuing a PG Diploma in Interaction Design (Hybrid) at IIT Bombay, (2027).
+          UX UI designer with <span className="font-bold text-primary">5+ years</span> of experience crafting intuitive, usable, and high-impact digital products. Strong background in <span className="font-bold text-primary">B2B product design</span>, with work spanning B2C platforms like JioPC, Tira Beauty, JioStream Studio (Tira), and Pret A Manger Loyalty. Actively leverage AI copilots & vibe coding to accelerate the process.
         </p>
       </section>
 
@@ -93,6 +101,24 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
                   {project.title}
                 </h3>
               </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Secondary projects (compact tiles, no cover image) */}
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {secondaryProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => navigateTo(`/${project.id}`)}
+              className="framer-card group relative cursor-pointer rounded-xl border border-gray-100 bg-white p-5 shadow-xs"
+            >
+              <p className="text-[10px] font-bold uppercase tracking-wider text-secondary">
+                {project.category}
+              </p>
+              <h3 className="mt-2 text-base font-bold text-primary group-hover:text-slate-800 transition-colors">
+                {project.title}
+              </h3>
             </div>
           ))}
         </div>
