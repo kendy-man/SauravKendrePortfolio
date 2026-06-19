@@ -10,7 +10,7 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
       id: 'amazon-prime-cancellation',
       title: 'Unsubscribing from Amazon Prime',
       category: 'Human Factors · UX Research',
-      image: '/images/piXTO6xxF9ttNpvPptDDsk8JQU.png',
+      image: '/images/amazon-prime-cover.svg',
     },
     {
       id: 'updaing-cost-estimates',
