@@ -44,6 +44,37 @@ const Placeholder: React.FC<{ label: string; note: string; aspect?: string }> = 
   </figure>
 );
 
+const ImageFigure: React.FC<{ src: string; alt: string; aspect?: string; objectFit?: 'cover' | 'contain' }> = ({
+  src,
+  alt,
+  aspect = 'aspect-[16/9]',
+  objectFit = 'cover',
+}) => (
+  <figure className={`${aspect} w-full overflow-hidden rounded-2xl bg-slate-50`}>
+    <img
+      src={src}
+      alt={alt}
+      className={`h-full w-full ${objectFit === 'cover' ? 'object-cover' : 'object-contain'}`}
+    />
+  </figure>
+);
+
+const DriveVideo: React.FC<{ fileId: string; aspect?: string; title: string }> = ({
+  fileId,
+  aspect = 'aspect-video',
+  title,
+}) => (
+  <figure className={`${aspect} w-full overflow-hidden rounded-2xl bg-black`}>
+    <iframe
+      src={`https://drive.google.com/file/d/${fileId}/preview`}
+      title={title}
+      allow="autoplay"
+      allowFullScreen
+      className="h-full w-full"
+    />
+  </figure>
+);
+
 export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
   return (
     <div className="animate-fade-in mx-auto max-w-5xl px-6 py-12 md:py-20">
@@ -68,11 +99,13 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
         </p>
       </div>
 
-      {/* Hero placeholder */}
+      {/* Hero */}
       <div className="mb-16">
-        <Placeholder
-          label="Hero cover"
-          note="Split-screen comparing the old 11-tap flow on the left and the redesigned 5-tap flow on the right. Vertical phone mockups. Recommended 2400×1400px."
+        <ImageFigure
+          src="/images/prime-hero-cover.png"
+          alt="Unsubscribing from Amazon Prime: hero cover"
+          aspect="aspect-[16/9]"
+          objectFit="cover"
         />
       </div>
 
@@ -111,8 +144,8 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
           <SectionHeading eyebrow="TL;DR">The 60-second version</SectionHeading>
           <Prose>
             Prime is one of the most-used subscriptions in India, and one of the hardest to walk
-            away from. Over five days at {bold('IIT Bombay (ePGD HFID, Group 4)')}, our team pulled
-            the mobile cancellation flow apart using four overlapping methods — task analysis, a
+            away from. Over a week at {bold('IDC School of Design, IIT Bombay')}, our team pulled
+            the mobile cancellation flow apart using four overlapping methods: task analysis, a
             heuristic audit, SHERPA error prediction, and Tobii eye-tracking. Then we rebuilt it.
           </Prose>
         </div>
@@ -138,20 +171,6 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
         </div>
       </div>
 
-      {/* Stats strip + team photo placeholders */}
-      <div className="mb-20 space-y-6">
-        <Placeholder
-          label="Stats strip"
-          note="A horizontal stats strip / animated counter visual showcasing the four headline numbers above. Could animate on scroll."
-          aspect="aspect-[16/5]"
-        />
-        <Placeholder
-          label="Team photo"
-          note="Group photo from HFID Class on 05 June 2026 (Slide 43 of the deck). Or a clean team credit card."
-          aspect="aspect-[16/9]"
-        />
-      </div>
-
       {/* The hook */}
       <div className="mb-20 max-w-3xl">
         <SectionHeading eyebrow="The framing">What we were really looking at</SectionHeading>
@@ -170,9 +189,9 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       </div>
 
       <div className="mb-20">
-        <Placeholder
-          label="Animated walkthrough (GIF / MP4)"
-          note='A short screen-recording (8–15s) showing the actual 11-tap journey in the live Amazon app, sped up 2×. Caption: "The real-time walk-through. No edits."'
+        <DriveVideo
+          fileId="1eajjmjz5QcrHZez9IyqzrJORFkKjs9PV"
+          title="Amazon Prime cancellation journey: mobile screen recording"
         />
       </div>
 
@@ -192,173 +211,12 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       </div>
 
       <div className="mb-20">
-        <Placeholder
-          label="OTT cancellation-time infographic"
-          note="A simple infographic — bar chart comparing average cancellation time across OTTs (from Slide 12 of the deck). Prime should visibly tower over the rest."
+        <ImageFigure
+          src="/images/prime-cancellation-time.png"
+          alt="Average cancellation time across OTTs: infographic"
           aspect="aspect-[16/9]"
+          objectFit="contain"
         />
-      </div>
-
-      {/* Method */}
-      <div className="mb-20">
-        <div className="max-w-3xl">
-          <SectionHeading eyebrow="Method">Four lenses, stacked</SectionHeading>
-          <Prose>
-            We picked four methods on purpose. Any one of them has blind spots. Layering them made
-            the findings harder to dismiss.
-          </Prose>
-        </div>
-
-        <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-100">
-          <table className="w-full text-left text-sm min-w-[640px]">
-            <thead className="bg-slate-50 text-primary">
-              <tr>
-                <th className="px-5 py-3 font-bold">Lens</th>
-                <th className="px-5 py-3 font-bold">What it gave us</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-slate-100 text-secondary font-medium">
-              <tr>
-                <td className="px-5 py-4 font-bold text-primary">HTA (Hierarchical Task Analysis)</td>
-                <td className="px-5 py-4">Broke "cancel Prime" into atomic sub-tasks and exposed the forced handoff to the Shopping app</td>
-              </tr>
-              <tr>
-                <td className="px-5 py-4 font-bold text-primary">Heuristic gap audit</td>
-                <td className="px-5 py-4">Friction points scored by severity against Nielsen's heuristics</td>
-              </tr>
-              <tr>
-                <td className="px-5 py-4 font-bold text-primary">SHERPA</td>
-                <td className="px-5 py-4">Credible human errors predicted before testing, scored by Probability × Criticality</td>
-              </tr>
-              <tr>
-                <td className="px-5 py-4 font-bold text-primary">Tobii eye-tracking + SUS</td>
-                <td className="px-5 py-4">Gaze paths, heatmaps, time-on-task, and a standardised usability score</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div className="mt-10">
-          <Placeholder
-            label="HTA tree diagram"
-            note="The HTA tree diagram from Slide 19. Export from Figma as a clean SVG — should be zoomable on click."
-          />
-        </div>
-
-        <div className="mt-10 max-w-3xl">
-          <Prose>
-            We tested with {bold('5 users between 18 and 30')}. When we asked them upfront how easy
-            they'd rate Prime cancellation, the average was about 6.4 out of 10. Nobody called it
-            easy. Most assumed the option would live somewhere in Profile or Settings. None of them
-            were right.
-          </Prose>
-          <div className="h-4" />
-          <Prose>
-            We also ran a parallel survey with {bold('58 respondents')} in the same age range. The
-            phrasing changed but the answer didn't: too much hassle, so I just kept paying.
-          </Prose>
-        </div>
-
-        {/* Pull quote */}
-        <figure className="mt-10 rounded-3xl bg-slate-50/70 border border-slate-100 p-8 md:p-12 text-center max-w-3xl mx-auto">
-          <blockquote className="font-serif italic text-2xl md:text-3xl text-primary leading-snug">
-            "Bahoot kich kich hai isliye rakh diya!"
-          </blockquote>
-          <figcaption className="mt-4 text-sm font-bold text-secondary">
-            — Survey respondent, age 24
-          </figcaption>
-          <p className="mt-3 text-xs uppercase tracking-widest text-slate-400 font-bold">
-            Placeholder · Style as a callout block with a faded background
-          </p>
-        </figure>
-      </div>
-
-      {/* Five gaps */}
-      <div className="mb-20">
-        <div className="max-w-3xl">
-          <SectionHeading eyebrow="The findings">Five interface gaps</SectionHeading>
-        </div>
-
-        <div className="mt-8 mb-10">
-          <Placeholder
-            label="Gaze heatmap comparison"
-            note="Side-by-side gaze heatmap visual — original (scattered, lots of red) vs redesigned (focused, linear gaze path). Tobii Pro Lab exports."
-          />
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-2">
-          {[
-            {
-              tag: 'HIGH',
-              title: '1. Buried entry point',
-              body: 'Cancel sits six taps deep. Sign-up takes one. The Account screen also looks almost identical to Home, so there\'s no signal you\'ve changed context. A "Subscriptions" option sits there pretending to be the right path. It isn\'t.',
-            },
-            {
-              tag: 'MODERATE',
-              title: '2. Misleading "Manage or cancel" label',
-              body: 'It over-promises. The screen gives a renewal-notice toggle and a cancel link, then silently bounces you out to a browser. No warning. No auth continuity. No explanation of what cancelling will do.',
-            },
-            {
-              tag: 'HIGH',
-              title: '3. Guilt framing',
-              body: 'On the way to the exit, the app shows a screen called "benefits you enjoyed." Loss aversion, deployed on purpose. A few participants visibly stalled when they hit this screen.',
-            },
-            {
-              tag: 'HIGH',
-              title: '4. Cancel hidden inside a collapsed row',
-              body: 'The actual cancel action is buried inside a dropdown labelled "Manage membership, cancel and more." Wrong UI pattern for a destructive action. Users read it as a settings toggle and scroll right past.',
-            },
-            {
-              tag: 'MODERATE',
-              title: '5. Unclear outcome',
-              body: 'The final confirmation never says when access ends, what you lose, or whether you can change your mind. You hit the last screen of an exhausting flow and now also have to guess what you just did.',
-            },
-          ].map((g) => (
-            <div
-              key={g.title}
-              className="rounded-2xl border border-slate-100 bg-slate-50/50 p-6"
-            >
-              <span
-                className={`inline-block rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${
-                  g.tag === 'HIGH'
-                    ? 'bg-primary text-white'
-                    : 'bg-slate-200 text-primary'
-                }`}
-              >
-                {g.tag} severity
-              </span>
-              <h3 className="mt-3 font-bold text-primary text-lg leading-snug">{g.title}</h3>
-              <p className="mt-3 text-sm text-secondary font-medium leading-relaxed">{g.body}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-10 max-w-3xl rounded-2xl border-l-4 border-primary bg-slate-50 p-6 md:p-8">
-          <p className="font-serif text-xl md:text-2xl italic text-primary leading-snug">
-            SHERPA called every one of these failure points before we ran a single eye-tracking
-            session. The heatmaps then confirmed them, almost gaze for gaze.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <Placeholder
-            label="Annotated Account screen"
-            note='Account screen with red call-out arrows pointing to the false "Subscriptions" affordance and the actual buried path.'
-            aspect="aspect-[4/5]"
-          />
-          <Placeholder
-            label='"Benefits you enjoyed" screen'
-            note="Screenshot with a callout labelling it as a loss-aversion pattern."
-            aspect="aspect-[4/5]"
-          />
-        </div>
-
-        <div className="mt-10">
-          <Placeholder
-            label="SHERPA worksheet visual"
-            note="Clean visual version of the SHERPA worksheet from Slide 27 — colour-coded by Probability × Criticality. Horizontal scroll table or card grid."
-          />
-        </div>
       </div>
 
       {/* Cross-OTT */}
@@ -423,11 +281,169 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
             <em>shipping</em> too.
           </Prose>
         </div>
+      </div>
+
+      {/* Method */}
+      <div className="mb-20">
+        <div className="max-w-3xl">
+          <SectionHeading eyebrow="Method">Four lenses, stacked</SectionHeading>
+          <Prose>
+            We picked four methods on purpose. Any one of them has blind spots. Layering them made
+            the findings harder to dismiss.
+          </Prose>
+        </div>
+
+        <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-100">
+          <table className="w-full text-left text-sm min-w-[640px]">
+            <thead className="bg-slate-50 text-primary">
+              <tr>
+                <th className="px-5 py-3 font-bold">Lens</th>
+                <th className="px-5 py-3 font-bold">What it gave us</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-secondary font-medium">
+              <tr>
+                <td className="px-5 py-4 font-bold text-primary">HTA (Hierarchical Task Analysis)</td>
+                <td className="px-5 py-4">Broke "cancel Prime" into atomic sub-tasks and exposed the forced handoff to the Shopping app</td>
+              </tr>
+              <tr>
+                <td className="px-5 py-4 font-bold text-primary">Heuristic gap audit</td>
+                <td className="px-5 py-4">Friction points scored by severity against Nielsen's heuristics</td>
+              </tr>
+              <tr>
+                <td className="px-5 py-4 font-bold text-primary">SHERPA</td>
+                <td className="px-5 py-4">Credible human errors predicted before testing, scored by Probability × Criticality</td>
+              </tr>
+              <tr>
+                <td className="px-5 py-4 font-bold text-primary">Tobii eye-tracking + SUS</td>
+                <td className="px-5 py-4">Gaze paths, heatmaps, time-on-task, and a standardised usability score</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
         <div className="mt-10">
-          <Placeholder
-            label="OTT small-multiples"
-            note="Five mini phone screens lined up, one per OTT, with their cancellation path lengths visualised as stacked dots or a path-length bar underneath each."
+          <ImageFigure
+            src="/images/prime-hta-tree.png"
+            alt="Hierarchical Task Analysis tree diagram"
+            aspect="aspect-[16/9]"
+            objectFit="contain"
+          />
+        </div>
+
+        <div className="mt-10 max-w-3xl">
+          <Prose>
+            We tested with {bold('5 users between 18 and 30')}. When we asked them upfront how easy
+            they'd rate Prime cancellation, the average was about 6.4 out of 10. Nobody called it
+            easy. Most assumed the option would live somewhere in Profile or Settings. None of them
+            were right.
+          </Prose>
+          <div className="h-4" />
+          <Prose>
+            We also ran a parallel survey with {bold('58 respondents')} in the same age range. The
+            phrasing changed but the answer didn't: too much hassle, so I just kept paying.
+          </Prose>
+        </div>
+
+        {/* Pull quote */}
+        <figure className="mt-10 rounded-3xl bg-slate-50/70 border border-slate-100 p-8 md:p-12 text-center max-w-3xl mx-auto">
+          <blockquote className="font-serif italic text-2xl md:text-3xl text-primary leading-snug">
+            "Bahoot kich kich hai isliye rakh diya!"
+          </blockquote>
+          <figcaption className="mt-4 text-sm font-bold text-secondary">
+            Survey respondent, age 24
+          </figcaption>
+        </figure>
+      </div>
+
+      {/* Five gaps */}
+      <div className="mb-20">
+        <div className="max-w-3xl">
+          <SectionHeading eyebrow="The findings">Five interface gaps</SectionHeading>
+        </div>
+
+        <div className="mt-8 mb-10">
+          <DriveVideo
+            fileId="1eajjmjz5QcrHZez9IyqzrJORFkKjs9PV"
+            title="Cancellation journey: mobile screen recording"
+          />
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-2">
+          {[
+            {
+              tag: 'HIGH',
+              title: '1. Buried entry point',
+              body: 'Cancel sits six taps deep. Sign-up takes one. The Account screen also looks almost identical to Home, so there\'s no signal you\'ve changed context. A "Subscriptions" option sits there pretending to be the right path. It isn\'t.',
+            },
+            {
+              tag: 'MODERATE',
+              title: '2. Misleading "Manage or cancel" label',
+              body: 'It over-promises. The screen gives a renewal-notice toggle and a cancel link, then silently bounces you out to a browser. No warning. No auth continuity. No explanation of what cancelling will do.',
+            },
+            {
+              tag: 'HIGH',
+              title: '3. Guilt framing',
+              body: 'On the way to the exit, the app shows a screen called "benefits you enjoyed." Loss aversion, deployed on purpose. A few participants visibly stalled when they hit this screen.',
+            },
+            {
+              tag: 'HIGH',
+              title: '4. Cancel hidden inside a collapsed row',
+              body: 'The actual cancel action is buried inside a dropdown labelled "Manage membership, cancel and more." Wrong UI pattern for a destructive action. Users read it as a settings toggle and scroll right past.',
+            },
+            {
+              tag: 'MODERATE',
+              title: '5. Unclear outcome',
+              body: 'The final confirmation never says when access ends, what you lose, or whether you can change your mind. You hit the last screen of an exhausting flow and now also have to guess what you just did.',
+            },
+          ].map((g) => (
+            <div
+              key={g.title}
+              className="rounded-2xl border border-slate-100 bg-slate-50/50 p-6"
+            >
+              <span
+                className={`inline-block rounded-full px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider ${
+                  g.tag === 'HIGH'
+                    ? 'bg-primary text-white'
+                    : 'bg-slate-200 text-primary'
+                }`}
+              >
+                {g.tag} severity
+              </span>
+              <h3 className="mt-3 font-bold text-primary text-lg leading-snug">{g.title}</h3>
+              <p className="mt-3 text-sm text-secondary font-medium leading-relaxed">{g.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 max-w-3xl rounded-2xl border-l-4 border-primary bg-slate-50 p-6 md:p-8">
+          <p className="font-serif text-xl md:text-2xl italic text-primary leading-snug">
+            SHERPA called every one of these failure points before we ran a single eye-tracking
+            session. The heatmaps then confirmed them, almost gaze for gaze.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <ImageFigure
+            src="/images/prime-fake-entry-points.png"
+            alt="Annotated Account screen showing fake entry points"
+            aspect="aspect-[4/5]"
+            objectFit="contain"
+          />
+          <ImageFigure
+            src="/images/prime-benefits-enjoyed.png"
+            alt='"Benefits you enjoyed" loss-aversion screen'
+            aspect="aspect-[4/5]"
+            objectFit="contain"
+          />
+        </div>
+
+        <div className="mt-10">
+          <ImageFigure
+            src="/images/prime-sherpa.png"
+            alt="SHERPA worksheet: predicted errors by probability and criticality"
+            aspect="aspect-[16/9]"
+            objectFit="contain"
           />
         </div>
       </div>
@@ -484,18 +500,10 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
           </Prose>
         </div>
 
-        <div className="mt-10 space-y-6">
-          <Placeholder
-            label="Prototype walkthrough video"
-            note="20–30s screen-recording walkthrough of the Figma prototype — full 5-tap journey, end to end. MP4, autoplay muted, loop. Hero deliverable of the page."
-          />
-          <Placeholder
-            label="Before/after carousel"
-            note="Scrolling/swipeable before/after comparison — original Amazon screens on top, redesigned screens on bottom. 5 screen pairs matching the new 5-tap journey. Annotate the dark pattern fixed at each step."
-          />
-          <Placeholder
-            label="Redesigned confirmation screen"
-            note='Large feature shot of the redesigned confirmation showing the explicit end-date, the Undo button, and the email confirmation note. The "honest exit" hero.'
+        <div className="mt-10">
+          <DriveVideo
+            fileId="1CWtbTP6Q-CmCkriJ9K9DIxyxrA7XwXmz"
+            title="Redesigned cancellation flow: prototype walkthrough"
           />
         </div>
       </div>
@@ -539,7 +547,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
                 <td className="px-5 py-4 font-bold text-primary">SUS grade</td>
                 <td className="px-5 py-4">F</td>
                 <td className="px-5 py-4">A ("Excellent")</td>
-                <td className="px-5 py-4">—</td>
+                <td className="px-5 py-4">·</td>
               </tr>
             </tbody>
           </table>
@@ -553,14 +561,19 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
           </Prose>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <Placeholder
-            label="SUS comparison chart"
-            note="Two bars, original vs redesigned, with grade bands (F to A) marked. The 38.5 → 92.0 jump should land hard."
+        <div className="mt-10">
+          <ImageFigure
+            src="/images/prime-final-comparison.png"
+            alt="Final comparison: original vs redesigned cancellation flow"
+            aspect="aspect-[16/9]"
+            objectFit="contain"
           />
-          <Placeholder
-            label="Final heatmap comparison"
-            note='Same screens, same task, two very different attention maps. Caption: "What clarity looks like, in pixels."'
+        </div>
+
+        <div className="mt-10">
+          <DriveVideo
+            fileId="1fKcpZdykhIj6aOQ03Va56v8unkvz6y-f"
+            title="Original vs redesigned cancellation flow"
           />
         </div>
       </div>
@@ -611,9 +624,8 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
         <Prose>
           The four-lens stack ({bold('HTA + Heuristic + SHERPA + eye-tracking + SUS')}) works on
           any flow with an exit problem. Onboarding. Paywalls. Account deletion. Plan downgrades.
-          I'm using a lighter version of it on {bold('PhysioConnect')} right now, because clinical
-          decision flows have their own version of the roach motel — easy to enter a diagnostic
-          path, hard to back out cleanly.
+          Anywhere a product makes leaving harder than arriving, this stack will surface why and
+          where, before a single redesign decision gets made.
         </Prose>
 
         <div className="mt-10 rounded-2xl border-l-4 border-primary bg-slate-50 p-6 md:p-8">
@@ -624,32 +636,38 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       </div>
 
       <div className="mb-20">
-        <Placeholder
-          label="Closing visual"
-          note='Single bold typographic treatment of "Dark patterns are a design choice. So is the alternative." Or a final hero shot of the redesigned undo screen.'
-        />
+        <div className="grid gap-6 md:grid-cols-2">
+          <figure className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-50">
+            <img
+              src="/images/prime-eyetracking-1.png"
+              alt="Moment during eye-tracking testing"
+              className="h-full w-full object-cover"
+            />
+            <figcaption className="sr-only">Moment during eye-tracking testing</figcaption>
+          </figure>
+          <figure className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-50">
+            <img
+              src="/images/prime-eyetracking-2.png"
+              alt="Moment during eye-tracking testing"
+              className="h-full w-full object-cover"
+            />
+            <figcaption className="sr-only">Moment during eye-tracking testing</figcaption>
+          </figure>
+        </div>
+        <p className="mt-4 text-center text-xs font-extrabold uppercase tracking-widest text-slate-400">
+          Moments during eye-tracking testing
+        </p>
       </div>
 
       {/* Footer meta */}
       <div className="mb-12 max-w-3xl border-t border-slate-100 pt-8">
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div>
-            <span className="font-bold text-slate-400 block uppercase text-xs tracking-wider">
-              Tools
-            </span>
-            <span className="font-bold text-primary block mt-1">
-              Figma · Tobii Pro Lab · Google Forms · SHERPA worksheet · Notion
-            </span>
-          </div>
-          <div>
-            <span className="font-bold text-slate-400 block uppercase text-xs tracking-wider">
-              Deliverables
-            </span>
-            <span className="font-bold text-primary block mt-1">
-              HTA diagrams · Heuristic audit · SHERPA worksheet · Interactive prototype · Gaze
-              heatmaps · SUS report · 42-slide research presentation
-            </span>
-          </div>
+        <div>
+          <span className="font-bold text-slate-400 block uppercase text-xs tracking-wider">
+            Tools
+          </span>
+          <span className="font-bold text-primary block mt-1">
+            Figma · Tobii Pro Lab · Google Forms · SHERPA worksheet · Notion
+          </span>
         </div>
 
         <div className="mt-8 flex flex-col sm:flex-row gap-3">
