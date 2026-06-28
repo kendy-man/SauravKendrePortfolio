@@ -4,9 +4,8 @@ interface AboutMeProps {
   navigateTo: (path: string) => void;
 }
 
-// Uploads playlist for @sauravkendre02 (channel UCwshCXgg4orljzsPXgaSGfw → UU…).
-// YouTube doesn't allow embedding a channel page directly; the uploads playlist is the equivalent.
-const YOUTUBE_PLAYLIST_ID = 'UUwshCXgg4orljzsPXgaSGfw';
+// Featured YouTube video ID (https://youtu.be/QHu4QI06K4c).
+const YOUTUBE_VIDEO_ID = 'QHu4QI06K4c';
 
 const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string }> = ({
   children,
@@ -240,21 +239,13 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
           {/* YouTube — embed, wide */}
           <div className="rounded-2xl border border-slate-100 bg-white overflow-hidden shadow-xs sm:col-span-2 lg:col-span-6 flex flex-col md:flex-row">
             <div className="md:w-2/3 bg-black aspect-video md:aspect-auto md:min-h-[260px]">
-              {YOUTUBE_PLAYLIST_ID ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/videoseries?list=${YOUTUBE_PLAYLIST_ID}`}
-                  title="Saurav Kendre — YouTube playlist"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="h-full w-full"
-                />
-              ) : (
-                <ImgPlaceholder
-                  label="YouTube playlist embed — add YOUTUBE_PLAYLIST_ID at top of AboutMe.tsx"
-                  aspect="aspect-auto"
-                  className="h-full rounded-none border-0 bg-slate-900 text-slate-300"
-                />
-              )}
+              <iframe
+                src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`}
+                title="Saurav Kendre — Featured video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full"
+              />
             </div>
             <div className="md:w-1/3 p-6 flex flex-col justify-center">
               <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">06</p>
