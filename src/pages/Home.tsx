@@ -7,6 +7,12 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
   const projects = [
     {
+      id: 'ai-insights-control-tower',
+      title: "AI Insights for LogiNext's Control Tower",
+      category: 'AI · Enterprise SaaS',
+      image: '/images/ai-insights-thumbnail.png',
+    },
+    {
       id: 'amazon-prime-cancellation',
       title: 'Unsubscribing from Amazon Prime',
       category: 'Human Factors · UX Research',

@@ -8,6 +8,7 @@ import { VisualDesign } from './pages/VisualDesign';
 import { AmazonPrime } from './pages/AmazonPrime';
 import { CostEstimates } from './pages/CostEstimates';
 import { HelpCentre } from './pages/HelpCentre';
+import { AIInsights } from './pages/AIInsights';
 import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
@@ -46,6 +47,10 @@ export default function App() {
 
     if (projectId === 'amazon-prime-cancellation') {
       return <AmazonPrime navigateTo={navigateTo} />;
+    }
+
+    if (projectId === 'ai-insights-control-tower') {
+      return <AIInsights navigateTo={navigateTo} />;
     }
 
     if (projectId === 'updaing-cost-estimates') {
