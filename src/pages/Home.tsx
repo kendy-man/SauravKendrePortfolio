@@ -65,7 +65,13 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
           I’m a UX designer.
         </h1>
         <p className="mt-8 max-w-3xl text-lg md:text-xl text-secondary font-medium leading-relaxed">
-          UX UI designer with <span className="font-bold text-primary">5+ years</span> of experience crafting intuitive, usable, and high-impact digital products. Strong background in <span className="font-bold text-primary">B2B product design</span>, with work spanning B2C platforms like JioPC, Tira Beauty, JioStream Studio (Tira), and Pret A Manger Loyalty. Actively leverage AI copilots & vibe coding to accelerate the process.
+          UX UI designer with <span className="font-bold text-primary">5+ years</span> of experience crafting intuitive, usable, and high-impact digital products. Strong background in <span className="font-bold text-primary">B2B product design</span>, with work spanning B2C platforms like JioPC, Tira Beauty, JioStream Studio (Tira), and Pret A Manger Loyalty. Actively leverage AI copilots & vibe coding to accelerate the process.{' '}
+          <button
+            onClick={() => navigateTo('/about-me')}
+            className="font-bold text-primary underline underline-offset-4 decoration-1 hover:text-slate-800 transition-colors cursor-pointer"
+          >
+            Know more
+          </button>
         </p>
       </section>
 
