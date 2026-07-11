@@ -186,8 +186,8 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
             <p className="text-[10px] font-extrabold uppercase tracking-widest text-slate-400">02</p>
             <h3 className="mt-2 font-bold text-primary text-lg">Student (still, at this age)</h3>
             <p className="mt-2 text-sm text-secondary font-medium leading-relaxed">
-              ePG Diploma in Interaction Design at IIT Bombay, 2027. The moment you stop being a
-              student is the moment you start being boring.
+              Still reading, still taking courses, still asking dumb questions. The moment you stop
+              being a student is the moment you start being boring.
             </p>
           </div>
 
@@ -349,7 +349,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
           <SectionHeading eyebrow="Certificates">A pile, and growing.</SectionHeading>
           <ul className="mt-6 divide-y divide-slate-100 rounded-2xl border border-slate-100 bg-white shadow-xs">
             {[
-              ['ePG Diploma, Interaction Design', 'IDC School of Design, IIT Bombay', 'In progress · 2027'],
               ['Upraised Product Management', 'Upraised', 'May 2023'],
               ['Jio Certified Blockchain Professional', 'Jio Platforms', 'May 2023'],
               ['Using AI For Market Research', 'Coursera', 'May 2023'],
