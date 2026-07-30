@@ -7,10 +7,10 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
   const projects = [
     {
-      id: 'ai-insights-control-tower',
-      title: "AI Insights for LogiNext's Control Tower",
-      category: 'AI · Enterprise SaaS',
-      image: '/images/ai-insights-thumbnail.png',
+      id: 'updaing-cost-estimates',
+      title: 'Updating Cost Estimates',
+      category: 'Feature Updates',
+      image: '/images/piXTO6xxF9ttNpvPptDDsk8JQU.png',
     },
     {
       id: 'amazon-prime-cancellation',
@@ -19,16 +19,10 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
       image: '/images/amazon-prime-cover.svg',
     },
     {
-      id: 'updaing-cost-estimates',
-      title: 'Updating Cost Estimates',
-      category: 'Feature Updates',
-      image: '/images/piXTO6xxF9ttNpvPptDDsk8JQU.png',
-    },
-    {
-      id: 'helpcentre-website-design',
-      title: 'Help Centre Website Design',
-      category: 'Website Design',
-      image: '/images/LI7d4N5GCHNpbVHwKlSlMmAB4.png',
+      id: 'jioevents-revamp',
+      title: 'JioEvents Revamp',
+      category: 'Product Design · Enterprise SaaS',
+      image: '/images/jioevents/7.png',
     },
   ];
 
