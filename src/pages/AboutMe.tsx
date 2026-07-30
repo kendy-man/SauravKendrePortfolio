@@ -88,7 +88,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
 
           <div className="mt-8">
             <Prose>
-              I'm a UXID designer based in Mumbai, but that's the easy half of the answer. The
+              I'm a product designer based in Mumbai, but that's the easy half of the answer. The
               harder half is that I'm someone who doesn't sit still well. There's almost always a
               camera, a game, a half-built prototype, a debate, a cycle ride, or a cat demanding
               attention somewhere in the picture.
@@ -109,7 +109,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
           </SectionHeading>
           <div className="space-y-5">
             <Prose>
-              I lead UI/UX at {bold('LogiNext')}, sole designer for a B2B SaaS product. End to end.
+              I lead product design at {bold('LogiNext')}, sole designer for a B2B SaaS product. End to end.
               Research, IA, interaction, UI, UAT — and the awkward edge cases nobody else wants to
               look at.
             </Prose>
