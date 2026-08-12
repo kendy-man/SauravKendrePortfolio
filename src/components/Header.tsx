@@ -60,6 +60,21 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigateTo }) => {
             Contact
           </a>
           <a
+            href="/availability"
+            onClick={(e) => handleLinkClick(e, "/availability")}
+            className={`inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200 ${
+              isActive("/availability")
+                ? "text-primary"
+                : "text-secondary hover:text-primary"
+            }`}
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
+            </span>
+            Availability
+          </a>
+          <a
             href="/saurav_kendre_resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -125,6 +140,19 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, navigateTo }) => {
               className="text-base font-semibold text-secondary"
             >
               Contact
+            </a>
+            <a
+              href="/availability"
+              onClick={(e) => handleLinkClick(e, "/availability")}
+              className={`inline-flex w-fit items-center gap-2 text-base font-semibold ${
+                isActive("/availability") ? "text-primary" : "text-secondary"
+              }`}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-amber-500" />
+              </span>
+              Availability
             </a>
             <a
               href="/saurav_kendre_resume.pdf"

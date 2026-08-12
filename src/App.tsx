@@ -10,6 +10,7 @@ import { CostEstimates } from './pages/CostEstimates';
 import { HelpCentre } from './pages/HelpCentre';
 import { AIInsights } from './pages/AIInsights';
 import { JioEvents } from './pages/JioEvents';
+import { Availability } from './pages/Availability';
 import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
@@ -38,6 +39,10 @@ export default function App() {
 
     if (cleanPath === '/about-me') {
       return <AboutMe navigateTo={navigateTo} />;
+    }
+
+    if (cleanPath === '/availability') {
+      return <Availability navigateTo={navigateTo} />;
     }
 
     const projectId = (currentPath.startsWith('/') ? currentPath.slice(1) : currentPath).toLowerCase();

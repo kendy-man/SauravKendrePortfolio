@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saurav Kendre — interview availability</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#F5F7FA;
+  --card:#FFFFFF;
+  --ink:#13223C;
+  --muted:#56688A;
+  --muted-dim:#7D8DA6;
+  --rule:#DDE3EC;
+  --rule-soft:#EAEEF4;
+  --signal:#A85C08;
+  --signal-fill:#E8912B;
+  --signal-wash:#FDF4E8;
+  --track:#E4E9F1;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:22px 20px 48px}
+
+/* ---------- bar ---------- */
+.bar{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--rule)}
+.who{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.who strong{color:var(--ink);font-weight:500}
+.clock{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:.05em;color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--signal-fill);animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(232,145,43,.5)}70%{box-shadow:0 0 0 7px rgba(232,145,43,0)}100%{box-shadow:0 0 0 0 rgba(232,145,43,0)}}
+#istClock{color:var(--ink)}
+
+/* ---------- the two windows ---------- */
+.slots{padding:22px 0 0}
+.slotgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px 18px 20px}
+.card.primary{border-color:#F0C68A;background:linear-gradient(180deg,var(--signal-wash),var(--card) 62%);box-shadow:0 1px 2px rgba(19,34,60,.05)}
+.tag{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dim);margin:0}
+.card.primary .tag{color:var(--signal)}
+.when{font-size:13.5px;color:var(--muted);margin:6px 0 12px}
+.when b{color:var(--ink);font-weight:600}
+.times{display:flex;align-items:flex-end;flex-wrap:wrap;gap:4px 9px;font-family:var(--display);font-weight:600;letter-spacing:-.03em;line-height:1;margin:0;font-size:clamp(21px,4.6vw,27px)}
+.card.primary .times{font-size:clamp(24px,5.4vw,31px)}
+.times .arrow{color:var(--muted-dim);font-weight:500;font-size:.62em;padding-bottom:.06em}
+.times .to{position:relative;padding-right:.3em}
+.times .to::after{content:"";position:absolute;right:0;top:-.07em;bottom:-.07em;width:4px;border-radius:1px;background:var(--muted-dim)}
+.card.primary .times .to::after{width:5px;background:var(--signal-fill)}
+.stop{display:flex;align-items:flex-start;gap:8px;margin:13px 0 0;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--muted)}
+.card.primary .stop{color:var(--signal)}
+.stop .barlet{width:4px;height:14px;border-radius:1px;background:var(--muted-dim);flex:none;margin-top:2px}
+.card.primary .stop .barlet{width:5px;background:var(--signal-fill)}
+
+.gateline{margin:16px 0 0;padding:13px 15px;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--signal-fill);border-radius:0 6px 6px 0;font-size:14px;color:var(--muted)}
+.gateline b{color:var(--ink);font-weight:600}
+.local{margin:10px 0 0;font-family:var(--mono);font-size:12px;color:var(--muted-dim)}
+.local b{color:var(--muted);font-weight:500}
+
+/* ---------- cutoffs ---------- */
+.cutoffs{margin-top:34px;padding-top:20px;border-top:1px solid var(--rule)}
+.sechead{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-dim);margin:0 0 4px}
+.secsub{font-size:13.5px;color:var(--muted);margin:0 0 16px;max-width:52ch}
+.colhead{display:grid;grid-template-columns:1fr auto;gap:14px;padding:0 0 8px 12px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dim)}
+.colhead span:last-child{text-align:right}
+.ladder{border-top:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:1fr auto;gap:3px 14px;align-items:baseline;padding:12px 0 12px 12px;border-bottom:1px solid var(--rule-soft);border-left:3px solid transparent}
+.row.is-live{border-left-color:var(--signal-fill);background:var(--signal-wash)}
+.row.is-past{opacity:.45}
+.cond{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.row.is-live .cond{color:var(--ink)}
+.res{font-family:var(--display);font-weight:600;font-size:clamp(15px,3.6vw,17px);letter-spacing:-.015em;color:var(--muted);white-space:nowrap;text-align:right}
+.row.is-live .res{color:var(--signal)}
+.chip{grid-column:1/-1;justify-self:start;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dim)}
+.row.is-live .chip{color:var(--signal)}
+
+/* ---------- rail ---------- */
+.rail{position:relative;height:66px;margin:26px 0 6px}
+.track{position:absolute;left:0;right:0;top:30px;height:7px;background:var(--track);border-radius:2px}
+.slot{position:absolute;top:30px;height:7px;background:var(--signal-fill);border-radius:2px}
+.slotcap{position:absolute;top:24px;width:5px;height:19px;background:var(--signal);border-radius:1px;transform:translateX(-4px)}
+.dead{position:absolute;top:30px;height:7px;border-radius:2px;background:repeating-linear-gradient(115deg,#D9C3A4 0 2px,transparent 2px 6px)}
+.gate{position:absolute;top:22px;width:1px;height:24px;background:var(--muted-dim)}
+.gatelab{position:absolute;top:0;transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:12px;color:var(--muted-dim)}
+.now{position:absolute;top:19px;width:2px;height:30px;background:var(--ink)}
+.now::before{content:"";position:absolute;left:-3px;top:-5px;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.nowlab{position:absolute;top:52px;transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:12px;letter-spacing:.09em;color:var(--ink)}
+.railends{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted-dim)}
+
+/* ---------- footer ---------- */
+.foot{margin-top:30px;padding-top:18px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;justify-content:space-between}
+.fine{font-family:var(--mono);font-size:12px;color:var(--muted-dim);margin:0;max-width:430px;line-height:1.65}
+.copy{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--card);border:1px solid var(--rule);padding:10px 15px;border-radius:5px;cursor:pointer;transition:border-color .18s,color .18s}
+.copy:hover{border-color:var(--signal-fill);color:var(--ink)}
+.copy:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+
+.reveal{opacity:0;transform:translateY(8px);animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards}
+.reveal.d1{animation-delay:.07s}.reveal.d2{animation-delay:.14s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal{animation:none;opacity:1;transform:none}.dot{animation:none}}
+@media (max-width:600px){
+  .slotgrid{grid-template-columns:1fr}
+  .wrap{padding:20px 16px 40px}
+}
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="bar">
+    <div class="who"><strong>Saurav Kendre</strong> · availability</div>
+    <div class="clock"><span class="dot" aria-hidden="true"></span><span id="istClock">--:--</span> <span>IST</span></div>
+  </header>
+
+  <section class="slots reveal">
+    <div class="slotgrid">
+      <article class="card primary">
+        <p class="tag" id="tagA">Next window</p>
+        <p class="when" id="whenA"></p>
+        <p class="times" id="timesA"></p>
+        <p class="stop"><span class="barlet" aria-hidden="true"></span><span id="stopA"></span></p>
+      </article>
+      <article class="card">
+        <p class="tag" id="tagB">After that</p>
+        <p class="when" id="whenB"></p>
+        <p class="times" id="timesB"></p>
+        <p class="stop"><span class="barlet" aria-hidden="true"></span><span id="stopB"></span></p>
+      </article>
+    </div>
+    <p class="gateline" id="gateLine"></p>
+    <p class="local" id="localLine" hidden></p>
+  </section>
+
+  <section class="cutoffs reveal d1">
+    <p class="sechead">Today's cutoffs</p>
+    <p class="secsub">My office hours are fixed, so how early you confirm decides which window I can hold open.</p>
+    <div class="colhead"><span>If you confirm</span><span>I'm free</span></div>
+    <div class="ladder" id="ladder"></div>
+
+    <div class="rail" id="rail" aria-hidden="true">
+      <div class="track"></div>
+      <div class="dead" id="deadBefore"></div>
+      <div class="dead" id="deadAfter"></div>
+      <div class="slot" id="slot"></div>
+      <div class="slotcap" id="slotCap"></div>
+      <div class="gate" id="gate1"></div><div class="gatelab" id="gate1lab">10:00</div>
+      <div class="gate" id="gate2"></div><div class="gatelab" id="gate2lab">15:30</div>
+      <div class="now" id="nowMark"></div><div class="nowlab" id="nowLab">NOW</div>
+    </div>
+    <div class="railends"><span>06:00</span><span>24:00</span></div>
+  </section>
+
+  <footer class="foot reveal d2">
+    <p class="fine">All times India Standard Time. This page reads the clock live — reload any time. End times are hard stops, not soft targets.</p>
+    <button class="copy" id="copyBtn" type="button">Copy these times</button>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ====== CONFIG ====== */
+  var CONFIG = {
+    gate1: 10*60,
+    gate2: 15*60+30,
+    fullDay: {s:10*60,   e:21*60},
+    evening: {s:17*60,   e:21*60},
+    night:   {s:22*60+30,e:23*60+30},
+    weekendsOpen: false,
+    railStart: 6*60,
+    railEnd: 24*60
+  };
+  var IST_OFFSET = 330;
+
+  function istParts(date){
+    var f=new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',weekday:'short',hour12:false});
+    var p={},parts=f.formatToParts(date),i;
+    for(i=0;i<parts.length;i++)p[parts[i].type]=parts[i].value;
+    return {y:+p.year,m:+p.month,d:+p.day,h:(+p.hour)%24,min:+p.minute,wd:p.weekday};
+  }
+  function instantFor(y,m,d,mins){return new Date(Date.UTC(y,m-1,d,0,0,0)+mins*60000-IST_OFFSET*60000);}
+  function clock12(m){var h=Math.floor(m/60)%24,x=m%60,ap=h<12?"AM":"PM",hh=(h%12)===0?12:h%12;return hh+":"+String(x).padStart(2,"0")+" "+ap;}
+  function clock24(m){return String(Math.floor(m/60)%24).padStart(2,"0")+":"+String(m%60).padStart(2,"0");}
+  function dateLabel(inst){return new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',weekday:'short',day:'numeric',month:'short'}).format(inst);}
+  function gap(m){var h=Math.floor(m/60),x=m%60;if(h<=0)return x+" min";if(x===0)return h+(h===1?" hour":" hours");return h+"h "+x+"m";}
+  function dayWord(off){return off===0?"Today":off===1?"Tomorrow":"In "+off+" days";}
+
+  function resolve(now){
+    var t=now.h*60+now.min, weekend=(now.wd==="Sat"||now.wd==="Sun"), r={t:t};
+    var FULL=CONFIG.fullDay, EVE=CONFIG.evening, NIT=CONFIG.night;
+
+    if(CONFIG.weekendsOpen && weekend){
+      r.tier="full"; r.rowIndex=0;
+      r.a={off:0,s:FULL.s,e:FULL.e,note:"No office today — any hour inside this range works."};
+      r.b={off:1,s:FULL.s,e:FULL.e,note:"Same range, if you confirm by "+clock12(CONFIG.gate1)+"."};
+      r.gate="No office today, so the whole day is open. <b>"+clock12(FULL.e)+"</b> is the hard stop.";
+      return r;
+    }
+    if(t<CONFIG.gate1){
+      r.tier="full"; r.rowIndex=0;
+      r.a={off:0,s:FULL.s,e:FULL.e,note:"Whole day is yours — pick any hour in this range."};
+      r.b={off:1,s:FULL.s,e:FULL.e,note:"Same again tomorrow if you confirm by "+clock12(CONFIG.gate1)+"."};
+      r.gate="You have <b>"+gap(CONFIG.gate1-t)+"</b> left to hold the whole day. Confirm after <b>"+clock12(CONFIG.gate1)+"</b> and today narrows to "+clock12(EVE.s)+" – "+clock12(EVE.e)+".";
+    } else if(t<CONFIG.gate2){
+      r.tier="evening"; r.rowIndex=1;
+      r.a={off:0,s:EVE.s,e:EVE.e,note:"Starts in "+gap(EVE.s-t)+" — after office hours."};
+      r.b={off:1,s:FULL.s,e:FULL.e,note:"Fully open if you confirm by "+clock12(CONFIG.gate1)+"."};
+      r.gate="This window holds for another <b>"+gap(CONFIG.gate2-t)+"</b>. Confirm after <b>"+clock12(CONFIG.gate2)+"</b> and tonight shrinks to "+clock12(NIT.s)+" – "+clock12(NIT.e)+".";
+    } else if(t<NIT.s){
+      r.tier="night"; r.rowIndex=2;
+      r.a={off:0,s:NIT.s,e:NIT.e,note:"Starts in "+gap(NIT.s-t)+" — the last slot tonight."};
+      r.b={off:1,s:FULL.s,e:FULL.e,note:"Wide open — no cutoff has passed yet for tomorrow."};
+      r.gate="Both of today's earlier cutoffs have passed, so tonight is down to the late slot. If that's awkward, tomorrow is completely free.";
+    } else if(t<NIT.e){
+      r.tier="night-live"; r.rowIndex=2; r.live=true;
+      r.a={off:0,s:t,e:NIT.e,note:"I'm at my desk right now — "+gap(NIT.e-t)+" left."};
+      r.b={off:1,s:FULL.s,e:FULL.e,note:"Wide open — no cutoff has passed yet for tomorrow."};
+      r.gate="Open right now. Once <b>"+clock12(NIT.e)+"</b> passes I'm offline until morning, and tomorrow's full day is yours if you confirm by <b>"+clock12(CONFIG.gate1)+"</b>.";
+    } else {
+      r.tier="closed"; r.rowIndex=-1;
+      r.a={off:1,s:FULL.s,e:FULL.e,note:"Wide open — no cutoff has passed yet."};
+      r.b={off:2,s:FULL.s,e:FULL.e,note:"Same range, subject to the same cutoffs."};
+      r.gate="Every window for today has passed. The cutoffs reset at midnight — confirm by <b>"+clock12(CONFIG.gate1)+"</b> and the whole day is open.";
+    }
+    return r;
+  }
+
+  var $=function(id){return document.getElementById(id);};
+  function pct(m){var span=CONFIG.railEnd-CONFIG.railStart;return Math.max(0,Math.min(100,((m-CONFIG.railStart)/span)*100));}
+  function timesHTML(s,e){return '<span>'+clock12(s)+'</span><span class="arrow" aria-hidden="true">&rarr;</span><span class="to">'+clock12(e)+'</span>';}
+
+  function render(){
+    var now=istParts(new Date());
+    var r=resolve(now);
+    var inst=function(off){return instantFor(now.y,now.m,now.d,r.t+off*24*60);};
+
+    $("istClock").textContent=clock24(r.t);
+
+    $("tagA").textContent = r.live ? "Open now" : "Next window";
+    $("whenA").innerHTML  = dayWord(r.a.off)+" · <b>"+dateLabel(inst(r.a.off))+"</b>";
+    $("timesA").innerHTML = timesHTML(r.a.s,r.a.e);
+    $("stopA").innerHTML  = "<b>"+clock12(r.a.e)+"</b> is a hard stop — I'm not available past it. "+r.a.note;
+
+    $("whenB").innerHTML  = dayWord(r.b.off)+" · <b>"+dateLabel(inst(r.b.off))+"</b>";
+    $("timesB").innerHTML = timesHTML(r.b.s,r.b.e);
+    $("stopB").innerHTML  = "<b>"+clock12(r.b.e)+"</b> is a hard stop. "+r.b.note;
+
+    $("gateLine").innerHTML=r.gate;
+
+    var localEl=$("localLine"); localEl.hidden=true;
+    var tz="your timezone";
+    try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||tz; }catch(e){}
+    if(tz!=="Asia/Kolkata"){
+      var sI=instantFor(now.y,now.m,now.d,r.a.s+r.a.off*24*60), eI=instantFor(now.y,now.m,now.d,r.a.e+r.a.off*24*60);
+      var lf=new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',hour12:true});
+      var ls=lf.format(sI), le=lf.format(eI);
+      if(ls!==clock12(r.a.s)){
+        localEl.innerHTML="Where you are (<b>"+tz+"</b>) the next window is "+ls+" – "+le+", "+new Intl.DateTimeFormat('en-GB',{weekday:'short',day:'numeric',month:'short'}).format(sI);
+        localEl.hidden=false;
+      }
+    }
+
+    /* ladder */
+    var rows=[
+      {cond:"Before "+clock12(CONFIG.gate1), res:clock12(CONFIG.fullDay.s)+" – "+clock12(CONFIG.fullDay.e), note:"Whole day, any hour"},
+      {cond:clock12(CONFIG.gate1)+" – "+clock12(CONFIG.gate2), res:clock12(CONFIG.evening.s)+" – "+clock12(CONFIG.evening.e), note:"After office hours"},
+      {cond:"After "+clock12(CONFIG.gate2), res:clock12(CONFIG.night.s)+" – "+clock12(CONFIG.night.e), note:"Late slot only"}
+    ];
+    var html="",i;
+    for(i=0;i<rows.length;i++){
+      var cls="",chip=rows[i].note;
+      if(i===r.rowIndex){cls=" is-live";chip=r.live?"Open right now":"You are here";}
+      else if(r.rowIndex===-1||i<r.rowIndex){cls=" is-past";chip="Cutoff passed";}
+      html+='<div class="row'+cls+'"><span class="cond">'+rows[i].cond+'</span><span class="res">'+rows[i].res+'</span><span class="chip">'+chip+'</span></div>';
+    }
+    $("ladder").innerHTML=html;
+
+    /* rail — always today */
+    $("gate1").style.left=pct(CONFIG.gate1)+"%"; $("gate1lab").style.left=pct(CONFIG.gate1)+"%";
+    $("gate2").style.left=pct(CONFIG.gate2)+"%"; $("gate2lab").style.left=pct(CONFIG.gate2)+"%";
+    $("nowMark").style.left=pct(r.t)+"%"; $("nowLab").style.left=pct(r.t)+"%";
+    var slotEl=$("slot"),capEl=$("slotCap"),dA=$("deadAfter"),dB=$("deadBefore");
+    if(r.a.off===0){
+      var a=pct(r.a.s), b=pct(r.a.e);
+      slotEl.style.left=a+"%"; slotEl.style.width=Math.max(1.2,b-a)+"%"; slotEl.style.display="block";
+      capEl.style.left=b+"%"; capEl.style.display="block";
+      dB.style.left="0%"; dB.style.width=a+"%"; dB.style.display=a>0?"block":"none";
+      dA.style.left=b+"%"; dA.style.width=Math.max(0,100-b)+"%"; dA.style.display=b<100?"block":"none";
+    } else {
+      slotEl.style.display="none"; capEl.style.display="none";
+      dB.style.left="0%"; dB.style.width="100%"; dB.style.display="block"; dA.style.display="none";
+    }
+
+    return {r:r,aInst:inst(r.a.off),bInst:inst(r.b.off)};
+  }
+
+  $("copyBtn").addEventListener("click",function(){
+    var s=render(), r=s.r;
+    var txt="All times IST. "+dayWord(r.a.off)+" ("+dateLabel(s.aInst)+"): "+clock12(r.a.s)+" – "+clock12(r.a.e)+
+            ", with "+clock12(r.a.e)+" as a hard stop. Then "+dayWord(r.b.off).toLowerCase()+" ("+dateLabel(s.bInst)+"): "+
+            clock12(r.b.s)+" – "+clock12(r.b.e)+".";
+    var btn=this,done=function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy these times";},1900);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){fallback(txt,done);});}
+    else{fallback(txt,done);}
+  });
+  function fallback(txt,done){
+    var ta=document.createElement("textarea");
+    ta.value=txt; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    try{document.execCommand("copy");done();}catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  render();
+  setInterval(render,20000);
+})();
+</script>
+</body>
+</html>
