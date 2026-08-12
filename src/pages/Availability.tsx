@@ -47,20 +47,6 @@ export const Availability: React.FC<AvailabilityProps> = ({ navigateTo }) => {
         ← Back to Home
       </button>
 
-      {/* Title block */}
-      <div className="mb-10">
-        <p className="text-sm font-extrabold uppercase tracking-wider text-secondary">
-          Interviews · Scheduling
-        </p>
-        <h1 className="mt-3 text-4xl font-black text-primary md:text-5xl lg:text-6xl tracking-tight">
-          Availability
-        </h1>
-        <p className="mt-6 max-w-3xl text-lg md:text-xl text-secondary font-medium leading-relaxed">
-          A live view of when I can take an interview call. Times update against the clock in real
-          time — how early you confirm decides which window I can hold open.
-        </p>
-      </div>
-
       {/* Embedded, self-contained availability page */}
       <div className="overflow-hidden rounded-2xl border border-slate-100 bg-slate-50/60 shadow-xs">
         <iframe
