@@ -72,9 +72,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ navigateTo }) => {
             <div>
               <h1 className="text-4xl font-black text-primary md:text-5xl lg:text-6xl tracking-tight leading-tight">
                 I’m Saurav Kendre.
-                <br />
-                My friends call me{' '}
-                <span className="font-serif italic font-normal text-primary">Kendy</span>.
               </h1>
             </div>
             <figure className="w-full max-w-[280px] mx-auto sm:mx-0">
