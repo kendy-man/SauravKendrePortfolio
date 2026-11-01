@@ -10,6 +10,7 @@ import { CostEstimates } from './pages/CostEstimates';
 import { HelpCentre } from './pages/HelpCentre';
 import { AIInsights } from './pages/AIInsights';
 import { JioEvents } from './pages/JioEvents';
+import { LoremIQ } from './pages/LoremIQ';
 import { Availability } from './pages/Availability';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -57,6 +58,10 @@ export default function App() {
 
     if (projectId === 'ai-insights-control-tower') {
       return <AIInsights navigateTo={navigateTo} />;
+    }
+
+    if (projectId === 'loremiq-revenue-workspace') {
+      return <LoremIQ navigateTo={navigateTo} />;
     }
 
     if (projectId === 'jioevents-revamp') {

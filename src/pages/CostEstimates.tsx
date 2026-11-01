@@ -1,14 +1,16 @@
 import React from 'react';
+import { SectionTabs } from '../components/SectionTabs';
 
 interface CostEstimatesProps {
   navigateTo: (path: string) => void;
 }
 
-const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string }> = ({
+const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string; id?: string }> = ({
   children,
   eyebrow,
+  id,
 }) => (
-  <div className="mb-6">
+  <div id={id} className="mb-6 scroll-mt-32">
     {eyebrow && (
       <p className="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-2">
         {eyebrow}
@@ -59,6 +61,25 @@ const VideoEmbed: React.FC<{ id: string; label: string }> = ({ id, label }) => (
   </figure>
 );
 
+const sections = [
+  { id: 'framing', label: 'Framing' },
+  { id: 'interviews', label: 'Interviews' },
+  { id: 'personas', label: 'Personas' },
+  { id: 'problem', label: 'Problem' },
+  { id: 'competitors', label: 'Competitors' },
+  { id: 'journey', label: 'Journey' },
+  { id: 'constraints', label: 'Constraints' },
+  { id: 'mental-models', label: 'Mental models' },
+  { id: 'ia', label: 'Information architecture' },
+  { id: 'wireframes', label: 'Wireframes' },
+  { id: 'decisions', label: 'Decisions' },
+  { id: 'outcome', label: 'Outcome' },
+  { id: 'ab-testing', label: 'A/B testing' },
+  { id: 'process', label: 'Process' },
+  { id: 'impact', label: 'Impact' },
+  { id: 'takeaways', label: 'Takeaways' },
+];
+
 export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
   return (
     <div className="animate-fade-in mx-auto max-w-5xl px-6 py-12 md:py-20">
@@ -108,9 +129,11 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
         ))}
       </div>
 
+      <SectionTabs sections={sections} className="-mx-6 mb-12 bg-white/90 px-6" />
+
       {/* Headline question */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="The framing">
+        <SectionHeading id="framing" eyebrow="The framing">
           What this looked like vs. what it actually was
         </SectionHeading>
         <Prose>
@@ -136,7 +159,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* User interviews */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="User interviews">Talking to the people the ticket volume hid</SectionHeading>
+          <SectionHeading id="interviews" eyebrow="User interviews">Talking to the people the ticket volume hid</SectionHeading>
           <Prose>
             The first week of Sprint 1 was for listening. I set up calls with {bold('three Dispatchers')}{' '}
             and {bold('two Shipper ops managers')} across our US, Singapore, and Middle East accounts.
@@ -206,7 +229,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Personas */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Personas">Two people on either side of the same number</SectionHeading>
+          <SectionHeading id="personas" eyebrow="Personas">Two people on either side of the same number</SectionHeading>
           <Prose>
             I don't build personas as posters. For me they're compression. Five interviews plus
             product analytics folded into two archetypes I could design against without checking
@@ -299,7 +322,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
 
       {/* What was breaking */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="The problem">What was actually breaking</SectionHeading>
+        <SectionHeading id="problem" eyebrow="The problem">What was actually breaking</SectionHeading>
         <Prose>
           Before the redesign, estimates were read-only. Any correction, whether it was a wrong
           weight, a missed discount, or a one-off surcharge, kicked off a chain of Slack messages,
@@ -330,7 +353,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Competitor research */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Competitor research">Where other pricing tools fell short</SectionHeading>
+          <SectionHeading id="competitors" eyebrow="Competitor research">Where other pricing tools fell short</SectionHeading>
           <Prose>
             I audited six adjacent products, three in freight and three outside of it, to see how
             each handled the {bold('editable-number-with-consequences')} problem. I wasn't looking
@@ -382,7 +405,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* User journey flows */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="User journey">Before and after, the same correction</SectionHeading>
+          <SectionHeading id="journey" eyebrow="User journey">Before and after, the same correction</SectionHeading>
           <Prose>
             I mapped the correction journey twice. Once as it existed, once as I wanted it to feel.
             Same user, same problem, different amount of friction between them and the fix.
@@ -459,7 +482,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Tradeoffs table */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Constraints">Naming the tradeoffs before wireframing</SectionHeading>
+          <SectionHeading id="constraints" eyebrow="Constraints">Naming the tradeoffs before wireframing</SectionHeading>
           <Prose>
             I wrote down the constraints first, because the tradeoffs needed to be visible to me and
             to the team.
@@ -502,7 +525,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Mental models */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Mental models">
+          <SectionHeading id="mental-models" eyebrow="Mental models">
             Two metaphors that did most of the work
           </SectionHeading>
           <Prose>
@@ -574,7 +597,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Figma-based mapping and architecture */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Information architecture">
+          <SectionHeading id="ia" eyebrow="Information architecture">
             Mapping the system in Figma before touching a screen
           </SectionHeading>
           <Prose>
@@ -668,7 +691,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Wireframes */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Wireframes">Wireframing in Figma Make AI, once I knew what to build</SectionHeading>
+          <SectionHeading id="wireframes" eyebrow="Wireframes">Wireframing in Figma Make AI, once I knew what to build</SectionHeading>
           <Prose>
             Wireframing didn't start on day one. By the time I opened {bold('Figma Make AI')} it was
             already the tail end of Sprint 1. The interviews were done, the competitor audit was
@@ -717,7 +740,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Design decisions */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Decisions">Design moves, and what I rejected</SectionHeading>
+          <SectionHeading id="decisions" eyebrow="Decisions">Design moves, and what I rejected</SectionHeading>
         </div>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2">
@@ -753,7 +776,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* The resulting screen */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="The outcome">The resulting screen</SectionHeading>
+          <SectionHeading id="outcome" eyebrow="The outcome">The resulting screen</SectionHeading>
           <Prose>
             One popup. Inline edits only on the fields that are safe to edit. Slab-based rows that
             expand into editable sub-structures without breaking the parent row's rhythm. A live
@@ -800,7 +823,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* A/B testing / validation */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="A/B testing">How we knew it was actually better</SectionHeading>
+          <SectionHeading id="ab-testing" eyebrow="A/B testing">How we knew it was actually better</SectionHeading>
           <Prose>
             Enterprise logistics doesn't get clean 50/50 traffic splits. The accounts are too few
             and too different. Instead I ran a {bold('cohorted rollout')}: 12 Dispatcher accounts on
@@ -873,7 +896,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
 
       {/* Process notes */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="Process">Two sprints, ten-plus iterations</SectionHeading>
+        <SectionHeading id="process" eyebrow="Process">Two sprints, ten-plus iterations</SectionHeading>
         <Prose>
           {bold('Sprint 1')} was for understanding. Week one went into interviews across the US,
           Singapore and Dubai accounts, plus the competitor audit and the persona work. Week two
@@ -894,7 +917,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
       {/* Impact */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Impact">What it moved</SectionHeading>
+          <SectionHeading id="impact" eyebrow="Impact">What it moved</SectionHeading>
           <Prose>
             Numbers are directional, based on observed workflows after launch.
           </Prose>
@@ -948,7 +971,7 @@ export const CostEstimates: React.FC<CostEstimatesProps> = ({ navigateTo }) => {
 
       {/* Takeaways */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="Takeaways">What I'd take into the next problem</SectionHeading>
+        <SectionHeading id="takeaways" eyebrow="Takeaways">What I'd take into the next problem</SectionHeading>
 
         <ul className="space-y-6">
           {[

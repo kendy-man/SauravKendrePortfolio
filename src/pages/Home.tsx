@@ -7,6 +7,13 @@ interface HomeProps {
 export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
   const projects = [
     {
+      id: 'loremiq-revenue-workspace',
+      title: 'LoremIQ Revenue Workspace',
+      category: 'B2B SaaS · Data-dense UI',
+      image: '/images/loremiq/cover.webp',
+      imageClass: 'object-left',
+    },
+    {
       id: 'updaing-cost-estimates',
       title: 'Updating Cost Estimates',
       category: 'Feature Updates',
@@ -72,7 +79,7 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
       {/* Projects Grid Section */}
       <section className="mb-24">
         <h2 className="sr-only">Selected Projects</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -85,7 +92,7 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
                   src={project.image}
                   alt={project.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-750 ease-out group-hover:scale-[1.03]"
+                  className={`h-full w-full object-cover ${project.imageClass ?? ''} transition-transform duration-750 ease-out group-hover:scale-[1.03]`}
                 />
               </div>
               {/* Details */}

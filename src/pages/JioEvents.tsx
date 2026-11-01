@@ -1,14 +1,16 @@
 import React from 'react';
+import { SectionTabs } from '../components/SectionTabs';
 
 interface JioEventsProps {
   navigateTo: (path: string) => void;
 }
 
-const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string }> = ({
+const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string; id?: string }> = ({
   children,
   eyebrow,
+  id,
 }) => (
-  <div className="mb-6">
+  <div id={id} className="mb-6 scroll-mt-32">
     {eyebrow && (
       <p className="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-2">
         {eyebrow}
@@ -41,6 +43,18 @@ const SlideStack: React.FC<{ slides: Array<{ src: string; alt: string }> }> = ({
 );
 
 const img = (n: string) => `/images/jioevents/${n}.png`;
+
+const sections = [
+  { id: 'tldr', label: 'TL;DR' },
+  { id: 'overview', label: 'Overview' },
+  { id: 'approach', label: 'Approach' },
+  { id: 'research', label: 'Research' },
+  { id: 'personas', label: 'Personas' },
+  { id: 'organiser-journey', label: 'Organiser journey' },
+  { id: 'attendee-journey', label: 'Attendee journey' },
+  { id: 'results', label: 'Results' },
+  { id: 'reflection', label: 'Reflection' },
+];
 
 export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
   return (
@@ -89,10 +103,12 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
         ))}
       </div>
 
+      <SectionTabs sections={sections} className="-mx-6 mb-12 bg-white/90 px-6" />
+
       {/* Headline impact */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="TL;DR">Six months after launch</SectionHeading>
+          <SectionHeading id="tldr" eyebrow="TL;DR">Six months after launch</SectionHeading>
           <Prose>
             Organiser retention more than doubled. Event creation grew by almost half. The time it
             took a first-time organiser to publish an event dropped from over two days to under
@@ -122,7 +138,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 01 · Overview (text-first with a single hero image) */}
       <div className="mb-20">
         <div className="mb-10 max-w-3xl">
-          <SectionHeading eyebrow="01 · Overview">The project and my role</SectionHeading>
+          <SectionHeading id="overview" eyebrow="01 · Overview">The project and my role</SectionHeading>
           <Prose>
             JioEvents is the virtual-events extension of {bold('JioMeet')}, Jio&apos;s meeting
             platform. Every month it serves 1300+ active organisers and roughly 1.5 to 2 lakh
@@ -161,7 +177,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 02 · Approach */}
       <div className="mb-20">
         <div className="mb-8 max-w-3xl">
-          <SectionHeading eyebrow="02 · Approach">A 12-week plan, five stages</SectionHeading>
+          <SectionHeading id="approach" eyebrow="02 · Approach">A 12-week plan, five stages</SectionHeading>
           <Prose>
             Research and analysis, defining the problem, ideation and wireframing, UI design, and
             evaluation. Each stage had a concrete output that fed the next one, so we were never
@@ -174,7 +190,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 03 · Research */}
       <div className="mb-20">
         <div className="mb-8 max-w-3xl">
-          <SectionHeading eyebrow="03 · Research & Analysis">
+          <SectionHeading id="research" eyebrow="03 · Research & Analysis">
             What worked, what hurt, and what the market was doing
           </SectionHeading>
           <Prose>
@@ -197,7 +213,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 04 · Personas */}
       <div className="mb-20">
         <div className="mb-8 max-w-3xl">
-          <SectionHeading eyebrow="04 · Personas & Requirements">
+          <SectionHeading id="personas" eyebrow="04 · Personas & Requirements">
             Three users, one platform
           </SectionHeading>
           <Prose>
@@ -218,7 +234,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 05 · Organiser: Dashboard */}
       <div className="mb-20">
         <div className="mb-8 max-w-3xl">
-          <SectionHeading eyebrow="05 · Organiser Journey">
+          <SectionHeading id="organiser-journey" eyebrow="05 · Organiser Journey">
             Shristy at the dashboard
           </SectionHeading>
           <Prose>
@@ -336,7 +352,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 10 · Attendee */}
       <div className="mb-20">
         <div className="mb-8 max-w-3xl">
-          <SectionHeading eyebrow="10 · Attendee Journey">
+          <SectionHeading id="attendee-journey" eyebrow="10 · Attendee Journey">
             Sohan: arrive, join, engage, connect
           </SectionHeading>
           <Prose>
@@ -366,7 +382,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 11 · Did it work? (text-first) */}
       <div className="mb-20">
         <div className="mb-10 max-w-3xl">
-          <SectionHeading eyebrow="11 · Did it work?">Measuring against the old product</SectionHeading>
+          <SectionHeading id="results" eyebrow="11 · Did it work?">Measuring against the old product</SectionHeading>
           <Prose>
             To know whether the redesign actually moved the needle, we set up a clean before and
             after. Six months of pre-launch analytics, then six months of post-launch analytics,
@@ -468,7 +484,7 @@ export const JioEvents: React.FC<JioEventsProps> = ({ navigateTo }) => {
       {/* 12 · Key Takeaways (text-first) */}
       <div className="mb-20">
         <div className="mb-8 max-w-3xl">
-          <SectionHeading eyebrow="12 · Reflection">What I&apos;m taking with me</SectionHeading>
+          <SectionHeading id="reflection" eyebrow="12 · Reflection">What I&apos;m taking with me</SectionHeading>
           <Prose>
             A revamp of this size only lands with tight planning, honest conversations with
             stakeholders, and a team that trusts each other enough to execute in parallel. Three

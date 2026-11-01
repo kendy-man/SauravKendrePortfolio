@@ -1,14 +1,16 @@
 import React from 'react';
+import { SectionTabs } from '../components/SectionTabs';
 
 interface AmazonPrimeProps {
   navigateTo: (path: string) => void;
 }
 
-const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string }> = ({
+const SectionHeading: React.FC<{ children: React.ReactNode; eyebrow?: string; id?: string }> = ({
   children,
   eyebrow,
+  id,
 }) => (
-  <div className="mb-6">
+  <div id={id} className="mb-6 scroll-mt-32">
     {eyebrow && (
       <p className="text-xs font-extrabold uppercase tracking-widest text-slate-400 mb-2">
         {eyebrow}
@@ -75,6 +77,19 @@ const DriveVideo: React.FC<{ fileId: string; aspect?: string; title: string }> =
   </figure>
 );
 
+const sections = [
+  { id: 'tldr', label: 'TL;DR' },
+  { id: 'framing', label: 'Framing' },
+  { id: 'why-it-matters', label: 'Why it matters' },
+  { id: 'benchmark', label: 'Benchmark' },
+  { id: 'method', label: 'Method' },
+  { id: 'findings', label: 'Findings' },
+  { id: 'redesign', label: 'Redesign' },
+  { id: 'results', label: 'Results' },
+  { id: 'takeaways', label: 'Takeaways' },
+  { id: 'limitations', label: 'Limitations' },
+];
+
 export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
   return (
     <div className="animate-fade-in mx-auto max-w-5xl px-6 py-12 md:py-20">
@@ -126,6 +141,8 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
         ))}
       </div>
 
+      <SectionTabs sections={sections} className="-mx-6 mb-12 bg-white/90 px-6" />
+
       {/* Hook quote */}
       <div className="mb-20 max-w-3xl">
         <div className="rounded-2xl border-l-4 border-primary bg-slate-50 p-6 md:p-8">
@@ -141,7 +158,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       {/* TL;DR */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="TL;DR">The 60-second version</SectionHeading>
+          <SectionHeading id="tldr" eyebrow="TL;DR">The 60-second version</SectionHeading>
           <Prose>
             Prime is one of the most-used subscriptions in India, and one of the hardest to walk
             away from. Over a week at {bold('IDC School of Design, IIT Bombay')}, our team pulled
@@ -173,7 +190,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
 
       {/* The hook */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="The framing">What we were really looking at</SectionHeading>
+        <SectionHeading id="framing" eyebrow="The framing">What we were really looking at</SectionHeading>
         <Prose>
           You sign up for Prime in three taps. Cancelling takes eleven, if you find the right path
           on the first try. The app doesn't even handle the final step itself. It throws you out to
@@ -197,7 +214,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
 
       {/* Why this matters */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="Why it matters">A regulatory gap, and a research gap</SectionHeading>
+        <SectionHeading id="why-it-matters" eyebrow="Why it matters">A regulatory gap, and a research gap</SectionHeading>
         <Prose>
           India's DPDP Act, along with newer rules in Germany, France and the UK, is converging on a
           pretty simple idea: {bold('ending a subscription should be as easy as starting one.')} The
@@ -222,7 +239,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       {/* Cross-OTT */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Benchmark">How does Prime compare?</SectionHeading>
+          <SectionHeading id="benchmark" eyebrow="Benchmark">How does Prime compare?</SectionHeading>
           <Prose>
             We walked through cancellation on five OTT apps on mobile, just to make sure Prime
             wasn't reflecting an industry norm.
@@ -286,7 +303,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       {/* Method */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Method">Four lenses, stacked</SectionHeading>
+          <SectionHeading id="method" eyebrow="Method">Four lenses, stacked</SectionHeading>
           <Prose>
             We picked four methods on purpose. Any one of them has blind spots. Layering them made
             the findings harder to dismiss.
@@ -359,7 +376,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       {/* Five gaps */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="The findings">Five interface gaps</SectionHeading>
+          <SectionHeading id="findings" eyebrow="The findings">Five interface gaps</SectionHeading>
         </div>
 
         <div className="mt-8 mb-10">
@@ -451,7 +468,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       {/* Redesign principles */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Redesign">Four principles, not a re-skin</SectionHeading>
+          <SectionHeading id="redesign" eyebrow="Redesign">Four principles, not a re-skin</SectionHeading>
           <Prose>We didn't redesign the look. We redesigned the path.</Prose>
         </div>
 
@@ -511,7 +528,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
       {/* Results */}
       <div className="mb-20">
         <div className="max-w-3xl">
-          <SectionHeading eyebrow="Results">What it moved</SectionHeading>
+          <SectionHeading id="results" eyebrow="Results">What it moved</SectionHeading>
         </div>
 
         <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-100">
@@ -580,7 +597,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
 
       {/* Takeaways */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="Takeaways">What I'd take into the next problem</SectionHeading>
+        <SectionHeading id="takeaways" eyebrow="Takeaways">What I'd take into the next problem</SectionHeading>
 
         <ul className="space-y-6">
           {[
@@ -602,7 +619,7 @@ export const AmazonPrime: React.FC<AmazonPrimeProps> = ({ navigateTo }) => {
 
       {/* Limitations */}
       <div className="mb-20 max-w-3xl">
-        <SectionHeading eyebrow="Limitations">What this didn't cover</SectionHeading>
+        <SectionHeading id="limitations" eyebrow="Limitations">What this didn't cover</SectionHeading>
         <Prose>
           Sample size is small (n=5), so the data is directional rather than statistical. We only
           audited mobile. The lab setting meant no real billing was at stake, so we couldn't
