@@ -8,7 +8,7 @@ export const Home: React.FC<HomeProps> = ({ navigateTo }) => {
   const projects = [
     {
       id: 'loremiq-revenue-workspace',
-      title: 'LoremIQ Revenue Workspace',
+      title: 'MaxIQ Revenue Workspace',
       category: 'B2B SaaS · Data-dense UI',
       image: '/images/loremiq/cover.webp',
       imageClass: 'object-left',
