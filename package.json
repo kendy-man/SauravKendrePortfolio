@@ -1,30 +1,9 @@
 {
   "name": "saurav-kendre-portfolio",
   "private": true,
-  "version": "0.1.0",
-  "type": "module",
+  "version": "0.2.0",
+  "description": "Static portfolio site served from site/. The previous React/Vite site lives on branch backup/site-v1-2026-11-18.",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.14",
-    "@vercel/analytics": "^2.0.1",
-    "@vitejs/plugin-react": "^5.0.4",
-    "lucide-react": "^0.546.0",
-    "motion": "^12.23.24",
-    "react": "^19.0.1",
-    "react-dom": "^19.0.1",
-    "vite": "^6.2.3"
-  },
-  "devDependencies": {
-    "@types/node": "^22.14.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.21",
-    "tailwindcss": "^4.1.14",
-    "typescript": "~5.8.2"
+    "dev": "python3 -m http.server 3000 --directory site"
   }
 }
