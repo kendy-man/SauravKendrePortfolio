@@ -1552,6 +1552,35 @@ body[data-view="boot"] .top{background:none;box-shadow:none}
 .brief[data-mode="skim"] .b-key,.brief[data-mode="skim"] .b-tldr li p{color:#AEB6B8}
 .brief .b-table td strong.em{color:var(--c1)}
 @media (prefers-contrast:more){.brief[data-mode="skim"] .b-key,.brief[data-mode="skim"] .b-tldr li p{color:var(--c2)}}
+
+/* Header auto-hides on case studies; sticky case nav moves up with it */
+body[data-view="case"] .top{transition:transform .35s var(--e-out),background .6s}
+html.top-hide body[data-view="case"] .top:not(:focus-within){transform:translateY(-105%)}
+body[data-view="case"] .b-nav,body[data-view="case"] .b-sech{transition:top .35s var(--e-out)}
+html.top-hide body[data-view="case"] .b-nav{top:14px}
+html.top-hide body[data-view="case"] .b-sech{top:88px}
+@media (max-width:860px){html.top-hide body[data-view="case"] .b-nav{top:10px}}
+[data-motion="reduced"] body[data-view="case"] .top,[data-motion="reduced"] body[data-view="case"] .b-nav{transition:none}
+
+/* Bottom nav: tighter, with sound and motion icon toggles */
+.rail{gap:16px}
+.rail .sys{font-size:11px;letter-spacing:.1em}
+.rail-tc{min-width:0;gap:8px}
+.rail-ch{gap:clamp(10px,1.8vw,26px)}
+.rail-ch a{gap:6px}
+.rail-keys{gap:6px}
+.rail-tog{display:flex;gap:6px;padding-left:14px;border-left:1px solid var(--line-soft)}
+.rail-ico{display:grid;place-items:center;width:30px;height:30px;padding:0;border-radius:50%;color:var(--mute);border:1px solid var(--line-soft);background:transparent;cursor:pointer;transition:color .2s,border-color .2s,background-color .2s}
+.rail-ico svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.rail-ico:hover{color:var(--text);border-color:var(--mute-2)}
+.rail-ico[aria-pressed="true"]#t-sound{color:var(--sodium);border-color:rgba(226,163,63,.45)}
+.rail-ico:focus-visible{outline:2px solid var(--sodium);outline-offset:2px}
+body[data-room="paper"] .rail-ico{color:var(--ink-mute);border-color:var(--paper-line)}
+body[data-room="paper"] .rail-ico:hover{color:var(--ink)}
+.rail-tc,.rail-end,.rail-keys,.rail-tog{flex-shrink:0;white-space:nowrap}
+@media (max-width:1180px){.rail-ch a .n{display:none}}
+@media (min-width:861px) and (max-width:1020px){.rail-tc{display:none}}
+@media (max-width:860px){.rail{gap:10px}.rail-tog{padding-left:10px}}
 </style>
 </head>
 <body data-view="boot" data-room="dark">
@@ -1564,10 +1593,6 @@ body[data-view="boot"] .top{background:none;box-shadow:none}
 <header class="top" id="top">
   <a class="top-mark" href="#/">Saurav Kendre</a>
   <span class="top-sys sys" id="sys" aria-hidden="true"></span>
-  <div class="top-ctl">
-    <button class="sys" id="t-sound" aria-pressed="true" aria-label="Sound">Sound on</button>
-    <button class="sys" id="t-motion" aria-pressed="false" aria-label="Reduce motion">Motion full</button>
-  </div>
 </header>
 
 <main id="main" tabindex="-1">
@@ -1760,6 +1785,10 @@ body[data-view="boot"] .top{background:none;box-shadow:none}
   <button class="rail-keys rail-cmd sys" id="rail-cmd" aria-haspopup="dialog">Go to<kbd aria-hidden="true">/</kbd></button>
   <button class="rail-keys sys" id="rail-keys" aria-haspopup="dialog">Keys<kbd aria-hidden="true">?</kbd></button>
   <a class="rail-end sys" href="#/end">End session</a>
+  <div class="rail-tog">
+    <button class="rail-ico" id="t-sound" aria-pressed="false" aria-label="Sound" title="Sound off (S)"></button>
+    <button class="rail-ico" id="t-motion" aria-pressed="false" aria-label="Reduce motion" title="Motion full (M)"></button>
+  </div>
 </nav>
 <div class="obs" id="obs" role="status" aria-live="polite"></div>
 <script>
@@ -8768,7 +8797,7 @@ const mqWide = matchMedia('(hover: hover) and (min-width: 861px)');
 
 const S = {
   motion: ls.get('motion', null) || (mqReduce.matches ? 'reduced' : 'full'),
-  sound: ls.get('snd', true),
+  sound: ls.get('snd', false),
   start: ss.get('start', null),
   visited: new Set(ss.get('visited', [])),
   path: ss.get('path', []),
@@ -9237,17 +9266,23 @@ addEventListener('scroll', onScroll, { passive: true });
 addEventListener('resize', onScroll);
 
 /* ---------- Top controls ---------- */
+const ICO = {
+  sndOn: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg>',
+  sndOff: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>',
+  motFull: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c1.5-4 3-4 4.5 0s3 4 4.5 0 3-4 4.5 0 3 4 4.5 0"/></svg>',
+  motLow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h18"/><circle cx="12" cy="12" r="1.6"/></svg>'
+};
 function applyMotion() {
   document.documentElement.dataset.motion = S.motion;
-  const b = $('#t-motion'); b.textContent = S.motion === 'full' ? 'Motion full' : 'Motion reduced'; b.setAttribute('aria-pressed', String(S.motion === 'reduced'));
+  const b = $('#t-motion'), full = S.motion === 'full'; b.innerHTML = full ? ICO.motFull : ICO.motLow; b.title = (full ? 'Motion full' : 'Motion reduced') + ' (M)'; b.setAttribute('aria-pressed', String(!full));
 }
 $('#t-motion').addEventListener('click', () => { S.motion = motionOK() ? 'reduced' : 'full'; ls.set('motion', S.motion); applyMotion(); });
 $('#t-sound').addEventListener('click', () => {
   Sound.set(!S.sound); ls.set('snd', S.sound); paintSound(); Sound.tick();
 });
-function paintSound() { const b = $('#t-sound'); b.textContent = S.sound ? 'Sound on' : 'Sound off'; b.setAttribute('aria-pressed', String(S.sound)); }
+function paintSound() { const b = $('#t-sound'); b.innerHTML = S.sound ? ICO.sndOn : ICO.sndOff; b.title = (S.sound ? 'Sound on' : 'Sound off') + ' (S)'; b.setAttribute('aria-pressed', String(S.sound)); }
 paintSound();
-// Sound is on unless the visitor turned it off. A browser only lets audio start after a first tap or key press.
+// Sound is off unless the visitor turned it on. A browser only lets audio start after a first tap or key press.
 const soundArm = () => { if (S.sound && !Sound.ctx) Sound.set(true); removeEventListener('pointerdown', soundArm, true); removeEventListener('keydown', soundArm, true); };
 addEventListener('pointerdown', soundArm, true); addEventListener('keydown', soundArm, true);
 
@@ -10015,7 +10050,7 @@ function briefProg() {
   const p = $('#b-prog'); if (!p) return;
   const h = document.documentElement.scrollHeight - innerHeight;
   p.style.transform = `scaleX(${h > 0 ? clamp(scrollY / h, 0, 1) : 0})`;
-  const n = $('#b-nav'); if (n) n.classList.toggle('stuck', n.getBoundingClientRect().top <= 62);
+  const n = $('#b-nav'); if (n) n.classList.toggle('stuck', n.getBoundingClientRect().top <= parseFloat(getComputedStyle(n).top) + 2);
 }
 addEventListener('scroll', () => { if (S.current !== 'case' || Brief.raf) return; Brief.raf = requestAnimationFrame(() => { Brief.raf = 0; briefProg(); }); }, { passive: true });
 function briefGo(id, focus) {
@@ -10682,6 +10717,14 @@ function addVisual() {
 })();
 /* The top bar turns to glass once the page has moved under it */
 addEventListener('scroll', () => { document.documentElement.classList.toggle('scrolled', scrollY > 24); }, { passive: true });
+// On a case study the header slides away while reading down and comes back on scroll up.
+let topY = scrollY;
+addEventListener('scroll', () => {
+  const y = scrollY, h = document.documentElement;
+  if (S.current !== 'case' || y < 120) { h.classList.remove('top-hide'); topY = y; return; }
+  if (Math.abs(y - topY) < 8) return;
+  h.classList.toggle('top-hide', y > topY); topY = y;
+}, { passive: true });
 /* Liquid: a picture settles like a surface when it arrives or is touched */
 const Liquid = {
   n: 0, el: null,
