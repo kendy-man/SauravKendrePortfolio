@@ -1581,6 +1581,16 @@ body[data-room="paper"] .rail-ico:hover{color:var(--ink)}
 @media (max-width:1180px){.rail-ch a .n{display:none}}
 @media (min-width:861px) and (max-width:1020px){.rail-tc{display:none}}
 @media (max-width:860px){.rail{gap:10px}.rail-tog{padding-left:10px}}
+
+/* Homepage primary CTA */
+.act--primary{gap:12px;padding:15px 18px 15px 26px;border-radius:99px;background:var(--sodium);color:#15110A;font-weight:650;letter-spacing:.12em;box-shadow:0 0 0 1px rgba(255,214,150,.35) inset,0 14px 34px -12px rgba(226,163,63,.65);transition:background-color .25s,box-shadow .25s,transform .25s var(--e-out)}
+.act--primary::before{display:none}
+.act--primary:hover,.act--primary:focus-visible{background:#F0B654;box-shadow:0 0 0 1px rgba(255,224,170,.5) inset,0 18px 40px -12px rgba(226,163,63,.8);transform:translateY(-1px)}
+.act--primary:focus-visible{outline:2px solid #F5E6C8;outline-offset:3px}
+.act--primary .act-arr{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--e-out)}
+.act--primary:hover .act-arr,.act--primary:focus-visible .act-arr{transform:translateX(4px)}
+.act--primary kbd{background:rgba(21,17,10,.12);border-color:rgba(21,17,10,.35);color:#15110A}
+[data-motion="reduced"] .act--primary,[data-motion="reduced"] .act--primary .act-arr{transition:none;transform:none}
 </style>
 </head>
 <body data-view="boot" data-room="dark">
@@ -1615,7 +1625,7 @@ body[data-room="paper"] .rail-ico:hover{color:var(--ink)}
       <p class="id-role"><span class="rl"><span id="home-role" style="--d:.2s"></span></span></p>
       <p class="id-now" id="home-now"></p>
       <ol class="feat" id="feat" aria-label="Featured episodes"></ol>
-      <div class="id-acts"><a class="act" href="#/archive" data-cursor="enter"><span id="home-all">All episodes</span><kbd aria-hidden="true">1</kbd></a><a class="act act--quiet" href="#/profile" data-cursor="enter">The person<kbd aria-hidden="true">2</kbd></a></div>
+      <div class="id-acts"><a class="act act--primary" href="#/archive" data-cursor="enter"><span id="home-all">All episodes</span><svg class="act-arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><kbd aria-hidden="true">1</kbd></a></div>
     </div>
     <div class="scene scene--trace" id="home-trace">
       <h2 class="trace-h">Four companies. One line running through them.</h2>
@@ -2069,6 +2079,7 @@ const CONTENT = {
     "form": "strata",
     "tone": "sodium"
    },
+   "featured": true,
    "cover": "img/invoicing/simulator.webp"
   },
   {
@@ -2094,6 +2105,7 @@ const CONTENT = {
     "form": "strata",
     "tone": "ice"
    },
+   "featured": true,
    "cover": "img/site/loremiq/pipeline.webp"
   },
   {
@@ -2148,7 +2160,6 @@ const CONTENT = {
     "form": "rings",
     "tone": "red"
    },
-   "featured": true,
    "cover": "img/site/prime-hero-cover.webp"
   },
   {
@@ -2174,7 +2185,6 @@ const CONTENT = {
     "form": "weave",
     "tone": "sodium"
    },
-   "featured": true,
    "cover": "img/site/jioevents/7.webp"
   },
   {
